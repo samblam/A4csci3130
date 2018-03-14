@@ -9,7 +9,8 @@ import android.widget.EditText;
 public class CreateContactAcitivity extends Activity {
 
     private Button submitButton;
-    private EditText nameField, emailField;
+    private EditText nameField, businessNumberField, addressField, primaryTypeField, provinceField;
+
     private MyApplicationData appState;
 
     @Override
@@ -21,17 +22,25 @@ public class CreateContactAcitivity extends Activity {
 
         submitButton = (Button) findViewById(R.id.submitButton);
         nameField = (EditText) findViewById(R.id.name);
-        emailField = (EditText) findViewById(R.id.email);
+        businessNumberField = (EditText) findViewById(R.id.businessnumber);
+        addressField = (EditText) findViewById(R.id.address);
+        primaryTypeField = (EditText) findViewById(R.id.primarybusiness);
+        provinceField = (EditText) findViewById(R.id.province);
+
     }
 
     public void submitInfoButton(View v) {
         //each entry needs a unique ID
-        String personID = appState.firebaseReference.push().getKey();
+        String businessID = appState.firebaseReference.push().getKey();
         String name = nameField.getText().toString();
-        String email = emailField.getText().toString();
-        Contact person = new Contact(personID, name, email);
+        String businessnum = businessNumberField.getText().toString();
+        String type = primaryTypeField.getText().toString();
+        String address = addressField.getText().toString();
+        String province = provinceField.getText().toString();
 
-        appState.firebaseReference.child(personID).setValue(person);
+        Business business = new Business(businessID, name, businessnum ,type,address,province);
+
+        appState.firebaseReference.child(businessID).setValue(business);
 
         finish();
 
