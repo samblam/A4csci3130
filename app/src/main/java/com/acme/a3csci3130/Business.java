@@ -14,23 +14,23 @@ import java.util.Map;
 
 public class Business implements Serializable {
 
-    public  String uid;
+    //public  String uid;
     public  String name;
 
     public  String businessnum;
     public String businesstype;
     public String address;
     public String province;
+    public String ID;
 
 
     public Business() {
         // Default constructor required for calls to DataSnapshot.getValue
     }
 
-    public Business(String uid, String name, String businessnum, String businesstype, String address, String province){
-        this.uid = uid;
+    public Business( String name, String ID, String businessnum, String businesstype, String address, String province){
         this.name = name;
-
+        this.ID = ID;
         this.businessnum = businessnum;
         this.businesstype = businesstype;
         this.address = address;
@@ -40,7 +40,7 @@ public class Business implements Serializable {
     @Exclude
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
-        result.put("uid", uid);
+        result.put("ID", ID);
         result.put("name", name);
 
         result.put("bsinessnum", businessnum);
