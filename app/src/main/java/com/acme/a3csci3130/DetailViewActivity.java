@@ -1,5 +1,11 @@
 package com.acme.a3csci3130;
-
+/** Shows all of the detail of an individual business
+ * Also offers functionality for Business Info to be updated, or deleted entirely
+        * @author Sam Barefoot and Teaching staff of CSCI 3130
+        * @author B00721422
+        * @version 1.0
+        *
+        */
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +27,9 @@ public class DetailViewActivity extends Activity {
     DatabaseReference myRef;
 
     @Override
+    /**
+     * Dictates what's supposed to be displayed, initiated, or created when the activity starts up
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_view);
@@ -58,6 +67,10 @@ public class DetailViewActivity extends Activity {
         });
     }
 
+    /**
+     * updates Business information in Firebase
+     * @param v
+     */
     public void updateContact(View v) {
 
         database = FirebaseDatabase.getInstance();
@@ -70,6 +83,10 @@ public class DetailViewActivity extends Activity {
         finish();
     }
 
+    /**
+     * Erases Contact from Firebase
+     * @param v
+     */
     public void eraseContact(View v)
     {
         database = FirebaseDatabase.getInstance();

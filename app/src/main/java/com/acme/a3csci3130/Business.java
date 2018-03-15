@@ -1,4 +1,10 @@
 package com.acme.a3csci3130;
+/** Represents a Business
+ * @author Sam Barefoot
+ * @author B00721422
+ * @version 1.0
+ *
+ */
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -9,7 +15,7 @@ import java.util.Map;
 
 /**
  * Class that defines how the data will be stored in the
- * Firebase databse. This is converted to a JSON format
+ * Firebase database. This is converted to a JSON format
  */
 
 public class Business implements Serializable {
@@ -28,6 +34,15 @@ public class Business implements Serializable {
         // Default constructor required for calls to DataSnapshot.getValue
     }
 
+    /**
+     * Contructor for Business Object
+     * @param name
+     * @param ID
+     * @param businessnum
+     * @param businesstype
+     * @param address
+     * @param province
+     */
     public Business( String name, String ID, String businessnum, String businesstype, String address, String province){
         this.name = name;
         this.ID = ID;

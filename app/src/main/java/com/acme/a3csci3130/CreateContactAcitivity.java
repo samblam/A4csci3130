@@ -1,4 +1,10 @@
 package com.acme.a3csci3130;
+/** Activity where Business's can be created
+        * @author Sam Barefoot and Teaching Staff of CSCI 3130
+        * @author B00721422
+        * @version 1.0
+        *
+        */
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,6 +20,10 @@ public class CreateContactAcitivity extends Activity {
     private MyApplicationData appState;
 
     @Override
+    /**
+     * Dictates what's supposed to be displayed, initiated, or created when the activity starts up
+     * @param savedInstanceState is a Bundle
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_contact_acitivity);
@@ -29,6 +39,10 @@ public class CreateContactAcitivity extends Activity {
 
     }
 
+    /**
+     * Function that allows user to create and add business to database
+     * @param v
+     */
     public void submitInfoButton(View v) {
         //each entry needs a unique ID
         String businessID = appState.firebaseReference.push().getKey();

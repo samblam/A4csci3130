@@ -1,5 +1,10 @@
 package com.acme.a3csci3130;
-
+/** The Main hub of the application, where Business's are listed
+        * @author Sam  and Teaching Staff of CSCI 3130
+        * @author B00721422
+        * @version 1.0
+        *
+        */
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,25 +23,37 @@ public class MainActivity extends Activity {
     private FirebaseListAdapter<Business> firebaseAdapter;
 
     @Override
+    /**
+     * Dictates what's supposed to be displayed, initiated, or created when the activity starts up
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //Get the app wide shared variables
+        /**
+         *Get the app wide shared variables
+         */
         MyApplicationData appData = (MyApplicationData)getApplication();
 
-        //Set-up Firebase
+        /**Set-up Firebase
+         *
+         */
         appData.firebaseDBInstance = FirebaseDatabase.getInstance();
         appData.firebaseReference = appData.firebaseDBInstance.getReference("businesses");
 
-        //Get the reference to the UI contents
+        /**Get the reference to the UI contents
+         *
+         */
         businessListView = (ListView) findViewById(R.id.listView);
 
-        //Set up the List View
+        /**Set up the List View
+         *
+         */
        firebaseAdapter = new FirebaseListAdapter<Business>(this, Business.class,
                 android.R.layout.simple_list_item_1, appData.firebaseReference) {
 
-
+            /**
+            Populates Business List
+             */
            @Override
             protected void populateView(View v, Business model, int position) {
                 TextView businessName = (TextView)v.findViewById(android.R.id.text1);
@@ -54,12 +71,20 @@ public class MainActivity extends Activity {
         });
     }
 
+    /**
+     * activates Create Business Activity
+     * @param v
+     */
     public void createContactButton(View v)
     {
         Intent intent=new Intent(this, CreateContactAcitivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Starts the Activity that show's Business details and allows users to edit or delete
+     * @param business
+     */
     private void showDetailView(Business business)
     {
         Intent intent = new Intent(this, DetailViewActivity.class);
