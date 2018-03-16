@@ -4,7 +4,7 @@
     ".write": true,
       	"businesses" : {
           
-         	//".validate": "newData.hasChildren(['businessnum', 'name', 'businesstype'])",
+         	
 
             "$ID" : {
               "address" : {
